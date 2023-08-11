@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { initializeApp } from "firebase/app";
+import firebaseConfig from "./firebaseConfig";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import * as Pages from "./pages";
 
@@ -9,6 +11,10 @@ export default function App() {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
+
+  useEffect(() => {
+    initializeApp(firebaseConfig);
+  }, []);
 
   return (
     <>
@@ -36,7 +42,7 @@ export default function App() {
                 to="/user_posts"
                 aria-current={activeTab === "user_posts" ? "page" : ""}
               >
-                User Posts
+                My Posts
               </Link>
             </li>
             <li className="nav-item">
@@ -50,7 +56,7 @@ export default function App() {
                 to="/gallery"
                 aria-current={activeTab === "gallery" ? "page" : ""}
               >
-                My Gallery
+                Gallery
               </Link>
             </li>
             <li className="nav-item">
@@ -59,7 +65,7 @@ export default function App() {
                 onClick={() => {
                   handleTabChange("about");
                 }}
-                to="/About"
+                to="/about"
                 aria-current={activeTab === "about" ? "page" : ""}
               >
                 About Us

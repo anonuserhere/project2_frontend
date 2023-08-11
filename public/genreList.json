@@ -1,0 +1,35 @@
+[
+  {
+    "display": "Animals",
+    "value": "animals"
+  },
+  { "display": "Places/Scenery", "value": "places" },
+  {
+    "display": "Funny",
+    "value": "funny"
+  },
+  {
+    "display": "Candid",
+    "value": "candid"
+  },
+  { "display": "Digital Media", "value": "digital media" },
+  {
+    "display": "Physical Media",
+    "value": "physical media"
+  },
+
+  { "display": "Technology", "value": "technology" },
+  { "display": "Vehicles", "value": "vehicles" },
+  {
+    "display": "Food",
+    "value": "food"
+  },
+  {
+    "display": "People",
+    "value": "people"
+  },
+  {
+    "display": "Clothing",
+    "value": "clothing"
+  }
+]
