@@ -8,14 +8,16 @@ import { clearAuthHeader, setAuthHeader } from "../apis";
 import API from "../apis";
 import { UserContext } from "../context/userContext";
 
-export function LoginPage({ cancel }) {
-  const [formData, setFormData] = useState("");
+export function LoginPage() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const [error, setError] = useState("");
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   const { setUserName } = useContext(UserContext);
 
   const handleChange = (e) => {
-    e.preventDefault();
     const entry = { [e.target.name]: e.target.value };
     setFormData((prev) => ({
       ...prev,
@@ -62,7 +64,7 @@ export function LoginPage({ cancel }) {
   };
 
   const handleSuccessLogin = (uid, email, idToken) => {
-    setAuthHeader(uid, token);
+    setAuthHeader(uid, idToken);
     API.post("/user/login", { email }).then((res) => {
       setUserName(email);
       // fetchData();
@@ -75,18 +77,55 @@ export function LoginPage({ cancel }) {
     return emailRegex.test(email);
   };
 
+  const clearForm = () => {
+    setFormData({
+      email: "",
+      password: "",
+    });
+  };
+
   return (
     <>
-      <div>
-        <form className="form" onSubmit={handleSubmit}>
-          <label className="form-label">Email:</label>
-          <input type="email" />
-          <label className="form-label">Password:</label>
-          <input type="password" />
-          <button className="btn btn-primary" type="submit">
-            Submit
-          </button>
-          <button className="btn btn-warning">Cancel</button>
+      <div className="form-container ms-3 mt-3">
+        <form
+          className="form"
+          style={{ width: "80dvw" }}
+          onSubmit={handleSubmit}
+        >
+          <div className="form-floating">
+            <input
+              className="form-control"
+              id="email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <label style={{ color: "darkViolet" }} htmlFor="email">
+              Email:
+            </label>
+          </div>
+          <div className="form-floating">
+            <input
+              className="form-control mt-2"
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <label style={{ color: "darkViolet" }} htmlFor="password">
+              Password:
+            </label>
+          </div>
+          <div className="mt-2">
+            <button className="btn btn-primary me-2" type="submit">
+              Submit
+            </button>
+            <button className="btn btn-warning" onClick={clearForm}>
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </>

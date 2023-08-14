@@ -31,5 +31,9 @@
   {
     "display": "Clothing",
     "value": "clothing"
+  },
+  {
+    "display": "Gaming",
+    "value": "gaming"
   }
 ]

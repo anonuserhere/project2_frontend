@@ -3,7 +3,7 @@
 // import httpStatus from "http-status";
 // export const DiaryHistoryContext = createContext();
 
-// const DiaryHistoryContextWrapper = ({children}) => {
+// const DiaryHistoryContextProvider = ({children}) => {
 //     const [diaryHistories, setDiaryHistories] = useState([]);
 
 //     useEffect(() => {
@@ -26,4 +26,4 @@
 //     );
 // }
 
-// export default DiaryHistoryContextWrapper;
+// export default DiaryHistoryContextProvider;

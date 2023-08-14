@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const UserContext = createContext();
 
-const UserContextWrapper = ({ children }) => {
+const UserContextProvider = ({ children }) => {
   const defaultUsername = window.localStorage.getItem("email")
     ? window.localStorage.getItem("email")
     : "";
@@ -14,4 +14,4 @@ const UserContextWrapper = ({ children }) => {
   );
 };
 
-export default UserContextWrapper;
+export default UserContextProvider;

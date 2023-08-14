@@ -6,15 +6,15 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import * as Pages from "./pages";
 
 export default function App() {
+  useEffect(() => {
+    initializeApp(firebaseConfig);
+  }, []);
+
   const [activeTab, setActiveTab] = useState("login");
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
-
-  useEffect(() => {
-    initializeApp(firebaseConfig);
-  }, []);
 
   return (
     <>
