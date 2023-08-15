@@ -87,46 +87,48 @@ export function LoginPage() {
   return (
     <>
       <div className="form-container ms-3 mt-3">
-        <form
-          className="form"
-          style={{ width: "80dvw" }}
-          onSubmit={handleSubmit}
-        >
-          <div className="form-floating">
-            <input
-              className="form-control"
-              id="email"
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            <label style={{ color: "darkViolet" }} htmlFor="email">
-              Email:
-            </label>
-          </div>
-          <div className="form-floating">
-            <input
-              className="form-control mt-2"
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            <label style={{ color: "darkViolet" }} htmlFor="password">
-              Password:
-            </label>
-          </div>
-          <div className="mt-2">
-            <button className="btn btn-primary me-2" type="submit">
-              Submit
-            </button>
-            <button className="btn btn-warning" onClick={clearForm}>
-              Cancel
-            </button>
-          </div>
-        </form>
+        <div className="d-flex justify-content-center">
+          <form
+            className="form"
+            style={{ width: "80dvw" }}
+            onSubmit={handleSubmit}
+          >
+            <div className="form-floating">
+              <input
+                className="form-control"
+                id="email"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <label style={{ color: "darkBlue" }} htmlFor="email">
+                Email:
+              </label>
+            </div>
+            <div className="form-floating">
+              <input
+                className="form-control mt-2"
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              <label style={{ color: "darkBlue" }} htmlFor="password">
+                Password:
+              </label>
+            </div>
+            <div className="mt-2">
+              <button className="btn btn-primary me-2" type="submit">
+                Submit
+              </button>
+              <button className="btn btn-warning" onClick={clearForm}>
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

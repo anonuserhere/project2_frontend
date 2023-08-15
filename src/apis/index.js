@@ -12,7 +12,6 @@ if (window.localStorage.getItem("uid")) {
 
 const API = axios.create({
   baseURL: import.meta.env.REACT_APP_API_BASE_URL,
-  baseURL: "http://localhost:5173",
   headers: headersData,
 });
 

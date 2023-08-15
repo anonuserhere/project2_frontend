@@ -1,29 +1,29 @@
-// import {createContext, useState, useEffect} from "react";
-// import API from "../apis";
-// import httpStatus from "http-status";
-// export const DiaryHistoryContext = createContext();
+import { createContext, useState, useEffect } from "react";
+import API from "../apis";
 
-// const DiaryHistoryContextProvider = ({children}) => {
-//     const [diaryHistories, setDiaryHistories] = useState([]);
+export const PostContext = createContext();
 
-//     useEffect(() => {
-//         fetchData();
-//     },[]);
+const PostContextProvider = ({ children }) => {
+  const [images, setImages] = useState([]);
 
-//     const fetchData = () => {
-//         API.get("/entry").then((res) => {
-//             if(res.status === httpStatus.OK) {
-//                 setDiaryHistories(res.data);
-//             }
-//         })
-//     }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
+  const fetchData = () => {
+    API.get("http://localhost:3001").then((res) => {
+      if (res.status === 200) {
+        setImages(res.data);
+        console.log(res.data);
+      }
+    });
+  };
 
-//     return (
-//         <DiaryHistoryContext.Provider value={{diaryHistories, setDiaryHistories, fetchData}}>
-//             {children}
-//         </DiaryHistoryContext.Provider>
-//     );
-// }
+  return (
+    <PostContext.Provider value={{ images, setImages, fetchData }}>
+      {children}
+    </PostContext.Provider>
+  );
+};
 
-// export default DiaryHistoryContextProvider;
+export default PostContextProvider;
