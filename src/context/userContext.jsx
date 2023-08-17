@@ -7,6 +7,7 @@ const UserContextProvider = ({ children }) => {
     ? window.localStorage.getItem("email")
     : "";
   const [username, setUsername] = useState(defaultUsername);
+
   return (
     <UserContext.Provider value={{ username, setUsername }}>
       {children}

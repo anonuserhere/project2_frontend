@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import { clearAuthHeader, setAuthHeader } from "../apis";
 import API from "../apis";
-import { UserContext } from "../context/userContext";
+import { UserContext } from "../context/UserContext";
 
 export function LoginPage() {
   const [formData, setFormData] = useState({

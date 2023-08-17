@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { PostContext } from "../context/PostContext";
 import { useNavigate } from "react-router-dom";
 
 export function UserPosts() {
+  const { postData } = useContext(PostContext);
   //   const navigate = useNavigate();
 
   const [formState, setFormState] = useState({
@@ -26,7 +28,7 @@ export function UserPosts() {
       }
     }
     getGenres();
-  }, []);
+  }, [genres]);
 
   const updateForm = (e) => {
     const { name, value, type, checked } = e.target;
@@ -63,6 +65,7 @@ export function UserPosts() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    postData(formState);
     clearForm();
   };
 
@@ -177,7 +180,16 @@ export function UserPosts() {
                 Caption:
               </label>
             </div>
-            <button type="submit" className="btn btn-info">
+            <button
+              type="submit"
+              className="btn btn-info"
+              disabled={
+                !formState.link ||
+                !formState.genre ||
+                !formState.site ||
+                !formState.caption
+              }
+            >
               Post
             </button>
           </form>

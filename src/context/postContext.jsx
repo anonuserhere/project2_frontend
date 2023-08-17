@@ -19,8 +19,18 @@ const PostContextProvider = ({ children }) => {
     });
   };
 
+  const postData = (newImagePost) => {
+    API.post("http://localhost:3001", newImagePost).then((res) => {
+      if (res.status === 201) {
+        const newImage = res.data;
+        setImages((prev) => [...prev, newImage]);
+        console.log("Successfully posted image: " + newImage);
+      }
+    });
+  };
+
   return (
-    <PostContext.Provider value={{ images, setImages, fetchData }}>
+    <PostContext.Provider value={{ images, setImages, fetchData, postData }}>
       {children}
     </PostContext.Provider>
   );

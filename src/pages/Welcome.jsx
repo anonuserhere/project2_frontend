@@ -1,12 +1,12 @@
 import { useState, useContext } from "react";
 import { LoginPage } from "./LoginPage";
 import { clearAuthHeader } from "../apis";
-import { UserContext } from "../context/userContext";
+import { UserContext } from "../context/UserContext";
 
 export function Welcome({ currentUser }) {
   const [loginPrompt, setLoginPrompt] = useState(false);
   const { setUsername } = useContext(UserContext);
-  //   const { fetchData } = useContext(DiaryHistoryContext);
+  const { fetchData } = useContext(PostContext);
 
   const handleLoginPrompt = (e) => {
     console.log("click detected");

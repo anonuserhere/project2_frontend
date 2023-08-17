@@ -18,3 +18,8 @@
 #search::placeholder {
   color: darkblue;
 }
+
+#image_card:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}

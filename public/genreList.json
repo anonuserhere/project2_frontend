@@ -1,39 +1,34 @@
 [
   {
     "display": "Animals",
-    "value": "animals"
+    "value": "Animals"
   },
-  { "display": "Places/Scenery", "value": "places" },
+  { "display": "Places/Scenery", "value": "Places/Scenery" },
   {
     "display": "Funny",
-    "value": "funny"
+    "value": "Funny"
   },
   {
     "display": "Candid",
-    "value": "candid"
+    "value": "Candid"
   },
-  { "display": "Digital Media", "value": "digital media" },
-  {
-    "display": "Physical Media",
-    "value": "physical media"
-  },
-
-  { "display": "Technology", "value": "technology" },
-  { "display": "Vehicles", "value": "vehicles" },
+  { "display": "Media", "value": "Media" },
+  { "display": "Technology", "value": "Technology" },
+  { "display": "Vehicles", "value": "Vehicles" },
   {
     "display": "Food",
-    "value": "food"
+    "value": "Food"
   },
   {
     "display": "People",
-    "value": "people"
+    "value": "People"
   },
   {
     "display": "Clothing",
-    "value": "clothing"
+    "value": "Clothing"
   },
   {
     "display": "Gaming",
-    "value": "gaming"
+    "value": "Gaming"
   }
 ]

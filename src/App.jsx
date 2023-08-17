@@ -71,21 +71,13 @@ export default function App() {
                 About Us
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link
-                className="nav-link disabled"
-                onClick={setActiveTab}
-                aria-disabled="true"
-              >
-                Disabled
-              </Link>
-            </li> */}
           </ul>
         </nav>
         <Routes>
           <Route path="/" element={<Pages.LoginPage />} />
           <Route path="/about" element={<Pages.About />} />
           <Route path="/gallery" element={<Pages.Gallery />} />
+          <Route path="/gallery/:id" element={<Pages.Gallery2 />} />
           <Route path="/user_posts" element={<Pages.UserPosts />} />
         </Routes>
       </Router>
