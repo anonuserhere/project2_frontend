@@ -1,17 +1,33 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../style.css";
 import { PostContext } from "../context/PostContext";
 import { useNavigate } from "react-router-dom";
 
 export function Gallery() {
-  const [search, setSearch] = useState([]);
-  const { images } = useContext(PostContext);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const [search, setSearch] = useState("");
+  const [originalImages, setOriginalImages] = useState([]);
+  const { images, setImages, fetchData } = useContext(PostContext);
+
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("searching...", search);
-    setSearch([]);
+    if (search.trim() === "") {
+      setImages(originalImages);
+    } else {
+      console.log(search);
+      const searchedPosts = images.filter((image) => {
+        return image.genre.some((tag) =>
+          tag.toLowerCase().includes(search.toLowerCase())
+        );
+      });
+      setImages(searchedPosts);
+      setSearch("");
+    }
   };
 
   const handleSelection = (postId) => {
@@ -54,7 +70,7 @@ export function Gallery() {
         <div
           className="card-container d-grid justify-content-center grid-template-columns m-4 p-0"
           style={{
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 3fr)",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 3fr)",
           }}
         >
           {images.map((i) => {
@@ -64,15 +80,19 @@ export function Gallery() {
                 id="image_card"
                 key={i._id}
                 onClick={() => handleSelection(i._id)}
+                style={{ height: "45dvh" }}
               >
                 <img
-                  src={i.link}
+                  src={i.url}
                   className="card-img-top"
                   style={{ height: "80%" }}
                   alt="pic"
                 />
-                <div className="card-body" style={{ color: "darkblue" }}>
-                  <p className="card-text">Posted by: {i.uploader}</p>
+                <div
+                  className="card-body"
+                  style={{ color: "darkblue", backgroundColor: "cornsilk" }}
+                >
+                  <p className="card-text">Posted by: {i.user}</p>
                 </div>
               </div>
             );

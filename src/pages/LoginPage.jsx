@@ -15,6 +15,7 @@ export function LoginPage() {
   });
   const [error, setError] = useState("");
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  // const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   const { setUserName } = useContext(UserContext);
 
   const handleChange = (e) => {
@@ -67,7 +68,7 @@ export function LoginPage() {
     setAuthHeader(uid, idToken);
     API.post("/user/login", { email }).then((res) => {
       setUserName(email);
-      // fetchData();
+      fetchData();
       window.localStorage.setItem("email -->", email);
       clearAuthHeader();
     });

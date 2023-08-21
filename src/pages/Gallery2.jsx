@@ -13,6 +13,10 @@ export function Gallery2() {
     navigate("/gallery");
   };
 
+  const editPost = (postId) => {
+    navigate(`/gallery/edit/${postId}`);
+  };
+
   return (
     <>
       <div className="container mt-4">
@@ -29,7 +33,7 @@ export function Gallery2() {
             <div className="row g-0">
               <div className="col-md-7">
                 <img
-                  src={selectedImage.link}
+                  src={selectedImage.url}
                   className="img-fluid rounded"
                   alt="pic"
                 />
@@ -52,9 +56,7 @@ export function Gallery2() {
                   <p className="card-text">
                     Taken on: {selectedImage.date?.slice(0, 10) || null}
                   </p>
-                  <p className="card-text">
-                    Posted by: {selectedImage.uploader}
-                  </p>
+                  <p className="card-text">Posted by: {selectedImage.user}</p>
                   <p> ============ </p>
                   <h6 className="card-title">
                     Caption: {selectedImage.caption}
@@ -64,9 +66,15 @@ export function Gallery2() {
             </div>
           </div>
         </div>
-        <div className="btn-container mt-3">
-          <button className="btn btn-info" onClick={goBack}>
+        <div className="btn-container mt-3 mb-3">
+          <button className="btn btn-info me-2" onClick={goBack}>
             Back 🔙
+          </button>
+          <button
+            className="btn btn-info me-5"
+            onClick={() => editPost(selectedImage._id)}
+          >
+            Edit
           </button>
         </div>
       </div>

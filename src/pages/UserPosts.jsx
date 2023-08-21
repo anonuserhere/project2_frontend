@@ -8,7 +8,7 @@ export function UserPosts() {
   //   const navigate = useNavigate();
 
   const [formState, setFormState] = useState({
-    link: "",
+    url: "",
     genre: [],
     date: "",
     site: "",
@@ -17,6 +17,10 @@ export function UserPosts() {
   });
 
   const [genres, setGenres] = useState([]);
+  // const linkRegex =
+  //   /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/g;
+  const linkRegex =
+    /^(https?):\/\/[-a-zA-Z0-9@:%._\+~#=]{2,128}\.[a-z]{2,6}([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
 
   useEffect(() => {
     async function getGenres() {
@@ -54,7 +58,7 @@ export function UserPosts() {
 
   const clearForm = () => {
     setFormState({
-      link: "",
+      url: "",
       genre: [],
       date: "",
       site: "",
@@ -65,8 +69,20 @@ export function UserPosts() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postData(formState);
-    clearForm();
+    const validLink = linkRegex.test(formState.url);
+    console.log(validLink);
+    if (validLink) {
+      postData(formState);
+      console.log(formState);
+      alert("Post erm... posted.");
+      clearForm();
+    } else if (validLink === false) {
+      alert("Invalid link provided");
+    } else if (!formState.genre) {
+      alert("Please select a genre tag");
+    } else {
+      console.log("Something else broke:", e);
+    }
   };
 
   return (
@@ -83,13 +99,13 @@ export function UserPosts() {
               <input
                 className="form-control"
                 type="text"
-                id="link"
-                name="link"
-                value={formState.link}
+                id="url"
+                name="url"
+                value={formState.url}
                 onChange={updateForm}
                 placeholder="link to your image"
               />
-              <label style={{ color: "darkBlue" }} htmlFor="link">
+              <label style={{ color: "darkBlue" }} htmlFor="url">
                 Link:
               </label>
             </div>
@@ -184,7 +200,7 @@ export function UserPosts() {
               type="submit"
               className="btn btn-info"
               disabled={
-                !formState.link ||
+                !formState.url ||
                 !formState.genre ||
                 !formState.site ||
                 !formState.caption

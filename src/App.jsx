@@ -78,7 +78,9 @@ export default function App() {
           <Route path="/about" element={<Pages.About />} />
           <Route path="/gallery" element={<Pages.Gallery />} />
           <Route path="/gallery/:id" element={<Pages.Gallery2 />} />
+          <Route path="/gallery/edit/:id" element={<Pages.GalleryEdit />} />
           <Route path="/user_posts" element={<Pages.UserPosts />} />
+          <Route path="/not_found" element={<Pages.NotFound />} />
         </Routes>
       </Router>
     </>
