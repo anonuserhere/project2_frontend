@@ -14,15 +14,19 @@ export function Gallery() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setOriginalImages(images);
+  }, []);
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (search.trim() === "") {
       setImages(originalImages);
     } else {
-      console.log(search);
-      const searchedPosts = images.filter((image) => {
+      const filteredSearch = search.trim().toLowerCase();
+      const searchedPosts = originalImages.filter((image) => {
         return image.genre.some((tag) =>
-          tag.toLowerCase().includes(search.toLowerCase())
+          tag.toLowerCase().includes(filteredSearch)
         );
       });
       setImages(searchedPosts);

@@ -17,17 +17,20 @@ const PostContextProvider = ({ children }) => {
         setImages(res.data);
         console.log(res.data);
       }
-    } catch (err) {
-      console.error(err);
+    } catch (e) {
+      console.error(e);
     }
   };
 
   const postData = (newImagePost) => {
     API.post("http://localhost:3001", newImagePost).then((res) => {
-      if (res.status === 201) {
-        const newImage = res.data;
-        setImages((prev) => [...prev, newImage]);
-        console.log("Successfully posted image: " + newImage);
+      try {
+        if (res.status === 201) {
+          const newImage = res.data;
+          setImages((prev) => [...prev, newImage]);
+        }
+      } catch (e) {
+        console.error(e);
       }
     });
   };
@@ -41,18 +44,21 @@ const PostContextProvider = ({ children }) => {
           console.log("something went wrong");
         }
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     });
   };
 
   const deletePost = (postId) => {
     API.delete(`http://localhost:3001/${postId}`).then((res) => {
-      console.log(postId);
-      if (res.status === 404) {
-        console.log("Successfully deleted");
-      } else {
-        console.log("Error: " + res.status);
+      try {
+        if (res.status === 404) {
+          console.log("Successfully deleted");
+        } else {
+          console.log("Error: " + res.status);
+        }
+      } catch (e) {
+        console.error(e);
       }
     });
   };

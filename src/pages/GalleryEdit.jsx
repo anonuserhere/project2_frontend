@@ -70,7 +70,6 @@ export function GalleryEdit() {
         updatedFormEdit[field] = selectedImage[field];
       }
     }
-
     setFormEdit(updatedFormEdit);
     editPost(selectedImage._id, updatedFormEdit);
     alert("Post edited");
@@ -148,13 +147,13 @@ export function GalleryEdit() {
                     <p className="card-text">
                       Taken on:
                       <input
-                        type="number"
+                        type="date"
                         className="form-control"
                         name="date"
                         value={formEdit.date}
-                        placeholder={
-                          selectedImage.date?.slice(0, 10) || "YYYY-MM-DD"
-                        }
+                        // placeholder={
+                        //   selectedImage.date?.slice(0, 10) || "YYYY-MM-DD"
+                        // }
                         onChange={handleEdit}
                       />
                     </p>
