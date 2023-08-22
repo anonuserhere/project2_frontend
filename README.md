@@ -1,5 +1,5 @@
-Frontend for Project 2 done in JavaScript.
-Hosted on Netlify (https://www.netlify.com)
+Frontend for Project 2 done in JavaScript. </br>
+Hosted on Netlify (https://www.netlify.com) </br>
 Have a look here: https://chic-pastelito-86f477.netlify.app/
 
 It is a simple representation of image posting sites such as Instagram and Imgur,
@@ -13,10 +13,10 @@ able to check their past posts.
 
 Technologies/libraries used:
 
-- react (with vite)
+- react (with vite) (https://vitejs.dev/)
 - bootstrap
 - axios
-- firebase (unimplemented for now, as of 22/8/2023)
+- firebase (not fully implemented as of 22/8/2023)
 
 Entity Relationship Diagram:
 ![Alt text](public/project2_map.png)
