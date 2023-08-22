@@ -12,7 +12,7 @@ const PostContextProvider = ({ children }) => {
 
   const fetchData = async () => {
     try {
-      const res = await API.get("http://localhost:3001");
+      const res = await API.get("https://auh-project2-backend.onrender.com");
       if (res.status === 200) {
         setImages(res.data);
         console.log(res.data);
@@ -23,20 +23,25 @@ const PostContextProvider = ({ children }) => {
   };
 
   const postData = (newImagePost) => {
-    API.post("http://localhost:3001", newImagePost).then((res) => {
-      try {
-        if (res.status === 201) {
-          const newImage = res.data;
-          setImages((prev) => [...prev, newImage]);
+    API.post("https://auh-project2-backend.onrender.com", newImagePost).then(
+      (res) => {
+        try {
+          if (res.status === 201) {
+            const newImage = res.data;
+            setImages((prev) => [...prev, newImage]);
+          }
+        } catch (e) {
+          console.error(e);
         }
-      } catch (e) {
-        console.error(e);
       }
-    });
+    );
   };
 
   const editPost = (postId, updatedData) => {
-    API.put(`http://localhost:3001/${postId}`, updatedData).then((res) => {
+    API.put(
+      `https://auh-project2-backend.onrender.com/${postId}`,
+      updatedData
+    ).then((res) => {
       try {
         if (res.status === 200) {
           console.log("post edited successfully");
@@ -50,17 +55,19 @@ const PostContextProvider = ({ children }) => {
   };
 
   const deletePost = (postId) => {
-    API.delete(`http://localhost:3001/${postId}`).then((res) => {
-      try {
-        if (res.status === 404) {
-          console.log("Successfully deleted");
-        } else {
-          console.log("Error: " + res.status);
+    API.delete(`https://auh-project2-backend.onrender.com/${postId}`).then(
+      (res) => {
+        try {
+          if (res.status === 404) {
+            console.log("Successfully deleted");
+          } else {
+            console.log("Error: " + res.status);
+          }
+        } catch (e) {
+          console.error(e);
         }
-      } catch (e) {
-        console.error(e);
       }
-    });
+    );
   };
 
   return (
