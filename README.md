@@ -39,5 +39,4 @@ we have the technology and tools available to build it, almost all of which are 
 available free-of-charge and maintained by the community, with instructions on how to do so
 to boot.
 
-Many thanks to the community for the gracious use of these tools and also teachers both online and off. Special shout-out to Edison for the file layout/organization tips and YS for guiding
-through deployment.
+Many thanks to the community for the gracious use of these tools and also teachers both online and off. Special shout-out to Edisen for the file layout/organization tips and YS for guiding through deployment.
