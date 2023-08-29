@@ -31,6 +31,8 @@ Users are also able to search for posts by tags (more functionality to be added 
 for example, date added, within captions, etc) for sorting purposes in the search field right
 at the top of the gallery page.
 
+![Alt text](public/search.png)
+
 Four months ago, if you told me I would be able to build something like this,
 however rudimentary, I would not have believed you. Yet here in the later half of 2023,
 we have the technology and tools available to build it, almost all of which are readily
